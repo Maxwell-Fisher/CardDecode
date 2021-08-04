@@ -3,7 +3,7 @@ cls
 title Card Decoder - @Maxwellcrafter
 setLocal enableDelayedExpansion
 
-echo Enter the full 26 digit card number
+echo Enter the full 16 digit card number
 set /p full=: 
 echo.
 set full=%full: =% 
