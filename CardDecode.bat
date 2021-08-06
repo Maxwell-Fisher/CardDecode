@@ -11,11 +11,15 @@ echo Formatted card number: %full:~0,4% %full:~4,4% %full:~8,4% %full:~12,4%
 echo.
 set issuer.known=0
 echo Card issuer:
+if "%full:~0,8%" GEQ "60400100" (if "%full:~0,8%" LEQ "60420099" (echo UkrCard && set issuer.known=1))
 if "%full:~0,7%" == "6054740" echo NPS Pridnestrovie && set issuer.known=1
 if "%full:~0,7%" == "6054741" echo NPS Pridnestrovie && set issuer.known=1
 if "%full:~0,7%" == "6054742" echo NPS Pridnestrovie && set issuer.known=1
 if "%full:~0,7%" == "6054743" echo NPS Pridnestrovie && set issuer.known=1
 if "%full:~0,7%" == "6054744" echo NPS Pridnestrovie && set issuer.known=1
+if "%full:~0,6%" GEQ "506099" (if "%full:~0,6%" LEQ "506198" (echo Verve && set issuer.known=1))
+if "%full:~0,6%" GEQ "650002" (if "%full:~0,6%" LEQ "650027" (echo Verve && set issuer.known=1))
+if "%full:~0,6%" GEQ "622126" (if "%full:~0,6%" LEQ "622925" (echo Discover Card && set issuer.known=1))
 if "%full:~0,6%" == "560221" echo Bankcard && set issuer.known=1
 if "%full:~0,6%" == "560222" echo Bankcard && set issuer.known=1
 if "%full:~0,6%" == "560223" echo Bankcard && set issuer.known=1
@@ -27,6 +31,8 @@ if "%full:~0,6%" == "564182" echo Switch && set issuer.known=1
 if "%full:~0,6%" == "633110" echo Switch && set issuer.known=1
 if "%full:~0,6%" == "417500" echo Visa Electron && set issuer.known=1
 if "%full:~0,6%" == "357111" echo Lankapay && set issuer.known=1
+if "%full:~0,4%" GEQ "3528" (if "%full:~0,4%" LEQ "3589" (echo JCB && set issuer.known=1))
+if "%full:~0,4%" GEQ "2221" (if "%full:~0,4%" LEQ "2720" (echo Mastercard && set issuer.known=1))
 if "%full:~0,4%" == "5610" echo Bankcard && set issuer.known=1
 if "%full:~0,4%" == "6011" echo Discover Card && set issuer.known=1
 if "%full:~0,4%" == "6521" echo RuPay && set issuer.known=1
@@ -93,14 +99,6 @@ if "%full:~0,2%" == "65" echo Troy && set issuer.known=1
 if "%full:~0,1%" == "4" echo Visa && set issuer.known=1
 if "%full:~0,1%" == "1" echo UATP && set issuer.known=1
 
-rem Numbers to add:
-rem 60400100–60420099 UkrCard
-rem 506099–506198 Verve
-rem 650002–650027 Verve
-rem 622126–622925 Discover Card
-rem 3528–3589 JCB
-rem 2221–2720 Mastercard
-
 if "%issuer.known%" == "0" echo Unknown
 
 echo.
@@ -125,7 +123,8 @@ call :luhn %full:~0,1%%full:~1,1%%full:~2,1%%full:~3,1%%full:~4,1%%full:~5,1%%fu
 
 :end
 echo.
-pause
+echo Press any key to exit
+pause >nul
 exit
 
 :luhn
