@@ -7,7 +7,7 @@ echo Enter the full 16 digit card number
 set /p full=: 
 echo.
 set full=%full: =% 
-echo Formatted card number: %full:~0,1%%full:~1,1%%full:~2,1%%full:~3,1% %full:~4,1%%full:~5,1%%full:~6,1%%full:~7,1% %full:~8,1%%full:~9,1%%full:~10,1%%full:~11,1% %full:~12,1%%full:~13,1%%full:~14,1%%full:~15,1%
+echo Formatted card number: %full:~0,4% %full:~4,4% %full:~8,4% %full:~12,4%
 echo.
 set issuer.known=0
 echo Card issuer:
