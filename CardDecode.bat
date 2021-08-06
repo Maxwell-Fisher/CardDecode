@@ -11,20 +11,13 @@ echo Formatted card number: %full:~0,4% %full:~4,4% %full:~8,4% %full:~12,4%
 echo.
 set issuer.known=0
 echo Card issuer:
+
 if "%full:~0,8%" GEQ "60400100" (if "%full:~0,8%" LEQ "60420099" (echo UkrCard && set issuer.known=1))
-if "%full:~0,7%" == "6054740" echo NPS Pridnestrovie && set issuer.known=1
-if "%full:~0,7%" == "6054741" echo NPS Pridnestrovie && set issuer.known=1
-if "%full:~0,7%" == "6054742" echo NPS Pridnestrovie && set issuer.known=1
-if "%full:~0,7%" == "6054743" echo NPS Pridnestrovie && set issuer.known=1
-if "%full:~0,7%" == "6054744" echo NPS Pridnestrovie && set issuer.known=1
+if "%full:~0,7%" GEQ "6054740" (if "%full:~0,7%" LEQ "6054744" (echo Pridnestrovie && set issuer.known=1))
 if "%full:~0,6%" GEQ "506099" (if "%full:~0,6%" LEQ "506198" (echo Verve && set issuer.known=1))
 if "%full:~0,6%" GEQ "650002" (if "%full:~0,6%" LEQ "650027" (echo Verve && set issuer.known=1))
 if "%full:~0,6%" GEQ "622126" (if "%full:~0,6%" LEQ "622925" (echo Discover Card && set issuer.known=1))
-if "%full:~0,6%" == "560221" echo Bankcard && set issuer.known=1
-if "%full:~0,6%" == "560222" echo Bankcard && set issuer.known=1
-if "%full:~0,6%" == "560223" echo Bankcard && set issuer.known=1
-if "%full:~0,6%" == "560224" echo Bankcard && set issuer.known=1
-if "%full:~0,6%" == "560225" echo Bankcard && set issuer.known=1
+if "%full:~0,6%" GEQ "560221" (if "%full:~0,6%" LEQ "560225" (echo Bankcard && set issuer.known=1))
 if "%full:~0,6%" == "676770" echo Maestro (uk) && set issuer.known=1
 if "%full:~0,6%" == "676774" echo Maestro (uk) && set issuer.known=1
 if "%full:~0,6%" == "564182" echo Switch && set issuer.known=1
@@ -53,11 +46,7 @@ if "%full:~0,4%" == "6762" echo Maestro && set issuer.known=1
 if "%full:~0,4%" == "6763" echo Maestro && set issuer.known=1
 if "%full:~0,4%" == "5019" echo Dankort && set issuer.known=1
 if "%full:~0,4%" == "4571" echo Dankort (Visa co-branded) && set issuer.known=1
-if "%full:~0,4%" == "2200" echo MIR && set issuer.known=1
-if "%full:~0,4%" == "2201" echo MIR && set issuer.known=1
-if "%full:~0,4%" == "2202" echo MIR && set issuer.known=1
-if "%full:~0,4%" == "2203" echo MIR && set issuer.known=1
-if "%full:~0,4%" == "2204" echo MIR && set issuer.known=1
+if "%full:~0,4%" GEQ "2200" (if "%full:~0,4%" LEQ "2204" (echo MIR && set issuer.known=1))
 if "%full:~0,4%" == "6334" echo Solo && set issuer.known=1
 if "%full:~0,4%" == "6767" echo Solo && set issuer.known=1
 if "%full:~0,4%" == "4903" echo Switch && set issuer.known=1
@@ -72,52 +61,38 @@ if "%full:~0,4%" == "4844" echo Visa Electron && set issuer.known=1
 if "%full:~0,4%" == "4913" echo Visa Electron && set issuer.known=1
 if "%full:~0,4%" == "4917" echo Visa Electron && set issuer.known=1
 if "%full:~0,4%" == "9792" echo Troy && set issuer.known=1
-if "%full:~0,3%" == "644" echo Discover Card && set issuer.known=1
-if "%full:~0,3%" == "645" echo Discover Card && set issuer.known=1
-if "%full:~0,3%" == "646" echo Discover Card && set issuer.known=1
-if "%full:~0,3%" == "647" echo Discover Card && set issuer.known=1
-if "%full:~0,3%" == "648" echo Discover Card && set issuer.known=1
-if "%full:~0,3%" == "649" echo Discover Card && set issuer.known=1
+if "%full:~0,3%" GEQ "644" (if "%full:~0,3%" LEQ "649" (echo Discover Card && set issuer.known=1))
+if "%full:~0,3%" GEQ "637" (if "%full:~0,3%" LEQ "639" (echo InstaPayment && set issuer.known=1))
 if "%full:~0,3%" == "636" echo InterPayment && set issuer.known=1
-if "%full:~0,3%" == "637" echo InstaPayment && set issuer.known=1
-if "%full:~0,3%" == "638" echo InstaPayment && set issuer.known=1
-if "%full:~0,3%" == "639" echo InstaPayment && set issuer.known=1
 if "%full:~0,2%" == "34" echo American Express && set issuer.known=1
 if "%full:~0,2%" == "37" echo American Express && set issuer.known=1
 if "%full:~0,2%" == "31" echo China T-Union && set issuer.known=1
 if "%full:~0,2%" == "62" echo China UnionPay && set issuer.known=1
 if "%full:~0,2%" == "36" echo Diners Club (international) && set issuer.known=1
-if "%full:~0,2%" == "54" echo Diners Club (us & canada) && set issuer.known=1
+if "%full:~0,2%" == "54" echo Diners Club (us ^& canada) && set issuer.known=1
 if "%full:~0,2%" == "65" echo Discover Card && set issuer.known=1
 if "%full:~0,2%" == "60" echo RuPay && set issuer.known=1
-if "%full:~0,2%" == "51" echo Mastercard && set issuer.known=1
-if "%full:~0,2%" == "52" echo Mastercard && set issuer.known=1
-if "%full:~0,2%" == "53" echo Mastercard && set issuer.known=1
-if "%full:~0,2%" == "54" echo Mastercard && set issuer.known=1
-if "%full:~0,2%" == "55" echo Mastercard && set issuer.known=1
+if "%full:~0,2%" GEQ "51" (if "%full:~0,2%" LEQ "55" (echo Mastercard && set issuer.known=1))
 if "%full:~0,2%" == "65" echo Troy && set issuer.known=1
 if "%full:~0,1%" == "4" echo Visa && set issuer.known=1
 if "%full:~0,1%" == "1" echo UATP && set issuer.known=1
 
 if "%issuer.known%" == "0" echo Unknown
-
 echo.
-
 echo Industry:
 
 if "%full:~0,1%" == "0" echo International Standard Orginization
 if "%full:~0,1%" == "1" echo Airlines
 if "%full:~0,1%" == "2" echo Airlines
-if "%full:~0,1%" == "3" echo Travel & entertainment
+if "%full:~0,1%" == "3" echo Travel ^& entertainment
 if "%full:~0,1%" == "4" echo Banking
 if "%full:~0,1%" == "5" echo Banking
-if "%full:~0,1%" == "6" echo Banking & merchandise
+if "%full:~0,1%" == "6" echo Banking ^& merchandise
 if "%full:~0,1%" == "7" echo Petroleum
-if "%full:~0,1%" == "8" echo Healthcare & communications
+if "%full:~0,1%" == "8" echo Healthcare ^& communications
 if "%full:~0,1%" == "9" echo Government
 
 echo.
-
 Echo Luhn check:
 call :luhn %full:~0,1%%full:~1,1%%full:~2,1%%full:~3,1%%full:~4,1%%full:~5,1%%full:~6,1%%full:~7,1%%full:~8,1%%full:~9,1%%full:~10,1%%full:~11,1%%full:~12,1%%full:~13,1%%full:~14,1%%full:~15,1%
 
