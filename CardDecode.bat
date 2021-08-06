@@ -26,7 +26,7 @@ if "%full:~0,6%" == "676774" echo Maestro (uk) && set issuer.known=1
 if "%full:~0,6%" == "564182" echo Switch && set issuer.known=1
 if "%full:~0,6%" == "633110" echo Switch && set issuer.known=1
 if "%full:~0,6%" == "417500" echo Visa Electron && set issuer.known=1
-if "%full:~0,1%" == "357111" echo Lankapay && set issuer.known=1
+if "%full:~0,6%" == "357111" echo Lankapay && set issuer.known=1
 if "%full:~0,4%" == "5610" echo Bankcard && set issuer.known=1
 if "%full:~0,4%" == "6011" echo Discover Card && set issuer.known=1
 if "%full:~0,4%" == "6521" echo RuPay && set issuer.known=1
